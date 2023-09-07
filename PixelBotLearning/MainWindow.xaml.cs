@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Drawing;
+using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 using MessageBox = System.Windows.MessageBox;
 
@@ -14,6 +16,12 @@ namespace PixelBotLearning
     /// </summary>
     public partial class MainWindow : Window
     {
+        private const UInt32 MOUSEEVENTF_LEFTDOWN = 0x0002;
+        private const UInt32 MOUSEEVENTF_LEFTUP = 0x0004;
+
+        [DllImport("user32.dll")]
+        private static extern void mouse_event(uint dwFlags, uint dx, uint dy, uint dwData, uint dwExtraInf);
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -55,5 +63,13 @@ namespace PixelBotLearning
             MessageBox.Show(String.Format("No Pixel found"));
             return false;
         }
+
+        private void Click()
+        {
+            mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
+            mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
+
+        }
+
     }
 }
