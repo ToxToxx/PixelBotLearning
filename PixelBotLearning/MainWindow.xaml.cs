@@ -21,7 +21,10 @@ namespace PixelBotLearning
 
         [DllImport("user32.dll")]
         private static extern void mouse_event(uint dwFlags, uint dx, uint dy, uint dwData, uint dwExtraInf);
-        
+
+        [DllImport("user32.dll")]
+        private static extern void SetCursorPos(int x, int y);
+
         public MainWindow()
         {
             InitializeComponent();
@@ -56,6 +59,7 @@ namespace PixelBotLearning
                     {
                         MessageBox.Show(String.Format($"Found pixel at {x}, {y} - Set mouse coursor"));
 
+                        DoubleClickAtPosition(x, y);
                         return true;
                     }
                 }
@@ -69,6 +73,14 @@ namespace PixelBotLearning
             mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
             mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
 
+        }
+
+        private void DoubleClickAtPosition(int posX, int posY)
+        {
+            SetCursorPos(posX, posY);
+            Click();
+            System.Threading.Thread.Sleep(250);
+            Click();
         }
 
     }
