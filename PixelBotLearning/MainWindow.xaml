@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:PixelBotLearning"
         mc:Ignorable="d"
         Title="PixelBot" Height="200" Width="300" ResizeMode="NoResize" Background="#FF2C2C2C">
+    
     <Grid>
         <Button Name="ButtonSearchPixel" Click="OnButtonSearchPixelClick" Content="Search Pixel" HorizontalAlignment="Center" Margin="0,50,0,0" VerticalAlignment="Center" Width="200" Height="30"/>
         <TextBox Name="TextBoxHexColor" HorizontalAlignment="Center" Margin="0,0,0,50" TextWrapping="Wrap" Text="#ffffff" VerticalAlignment="Center" Width="200" Height="30" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
